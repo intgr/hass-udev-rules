@@ -1,0 +1,14 @@
+# udev rules to grant Home Assistant access to ZigBee dongle devices.
+# Overrides default device group 'uucp' to 'hass'
+# Source: https://github.com/intgr/hass-udev-rules
+#
+# ----------------
+
+# Marketing name: Sonoff ZigBee 3.0 USB Dongle-E
+# Output from 'lsusb -v'
+# idVendor           0x10c4 Silicon Labs
+# idProduct          0xea60 CP210x UART Bridge
+# iManufacturer           1 Itead
+# iProduct                2 Sonoff Zigbee 3.0 USB Dongle Plus V2
+# iSerial                 3 40056f553953ef11906528e0174bec31
+SUBSYSTEM=="tty", ENV{ID_USB_SERIAL_SHORT}=="40056f553953ef11906528e0174bec31", GROUP="hass", MODE="0660"
